@@ -2,14 +2,12 @@ import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
 import {
-  Camera,
-  useCameraDevices,
-  useFrameProcessor,
-} from 'react-native-vision-camera';
-import {
   getLandMarkFromFace,
   scanFacesFromCamera,
   FaceField,
+  useCameraDevices,
+  useFrameProcessor,
+  Camera,
 } from 'vision-camera-rn-face-detector';
 
 export default function App() {

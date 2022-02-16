@@ -2,6 +2,7 @@ import { NativeModules, Platform } from 'react-native';
 import 'react-native-reanimated';
 import type { Frame } from 'react-native-vision-camera';
 import type { Face, FaceField } from './types/face';
+export * from 'react-native-vision-camera';
 
 const LINKING_ERROR =
   `The package 'vision-camera-rn-face-detector' doesn't seem to be linked. Make sure: \n\n` +
