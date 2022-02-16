@@ -42,7 +42,7 @@ import {...} from 'vision-camera-rn-face-detector';
 const frameProcessor = useFrameProcessor((frame) => {
     'worklet';
     const faces = scanFacesFromCamera(frame);
-    console.log();
+    console.log(faces);
     frame.close();
   }, []);
 

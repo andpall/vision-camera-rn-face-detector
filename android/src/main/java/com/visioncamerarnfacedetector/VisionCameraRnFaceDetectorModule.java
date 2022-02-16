@@ -27,6 +27,7 @@ import java.util.Map;
 @ReactModule(name = VisionCameraRnFaceDetectorModule.NAME)
 public class VisionCameraRnFaceDetectorModule extends ReactContextBaseJavaModule {
   public static final String NAME = "VisionCameraRnFaceDetector";
+  private static final String UNIQUE_ID = "uniqueId";
   private static ReactApplicationContext reactContext;
   @SuppressLint("StaticFieldLeak")
   private static Activity activity;
@@ -62,7 +63,7 @@ public class VisionCameraRnFaceDetectorModule extends ReactContextBaseJavaModule
   public Map<String, Object> getConstants() {
     final Map<String, Object> constants = new HashMap<>();
     String android_id = Settings.System.getString(getReactApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-    constants.put("uniqueId", android_id);
+    constants.put(UNIQUE_ID, android_id);
     return constants;
   }
 

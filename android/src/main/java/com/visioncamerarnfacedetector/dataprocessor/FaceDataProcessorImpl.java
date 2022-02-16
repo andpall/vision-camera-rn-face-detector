@@ -62,6 +62,16 @@ public class FaceDataProcessorImpl implements FaceDataProcessor {
     private static final String RIGHT_EYEBROW_TOP_CONTOUR = "rightEyebrowTopContour";
     private static final String RIGHT_EYEBROW_BOTTOM_CONTOUR = "rightEyebrowBottomContour";
 
+    private static final String LEFT = "left";
+    private static final String TOP = "top";
+    private static final String WIDTH = "width";
+    private static final String HEIGHT = "height";
+    private static final String EULER_X = "eulerX";
+    private static final String EULER_Y = "eulerY";
+    private static final String EULER_Z = "eulerZ";
+    private static final String X = "X";
+    private static final String Y = "Y";
+
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
     static {
@@ -76,10 +86,10 @@ public class FaceDataProcessorImpl implements FaceDataProcessor {
         Rect rect = face.getBoundingBox();
         WritableMap rectObject = Arguments.createMap();
 
-        rectObject.putInt("left", rect.left);
-        rectObject.putInt("top", rect.top);
-        rectObject.putInt("width", rect.right - rect.left);
-        rectObject.putInt("height", rect.bottom - rect.top);
+        rectObject.putInt(LEFT, rect.left);
+        rectObject.putInt(TOP, rect.top);
+        rectObject.putInt(WIDTH, rect.right - rect.left);
+        rectObject.putInt(HEIGHT, rect.bottom - rect.top);
 
         return rectObject;
     }
@@ -88,9 +98,9 @@ public class FaceDataProcessorImpl implements FaceDataProcessor {
     public WritableMap getWritableMapFromRotation(Face face) {
         WritableMap rotationObject = Arguments.createMap();
 
-        rotationObject.putDouble("eulerX", face.getHeadEulerAngleZ());
-        rotationObject.putDouble("eulerY", face.getHeadEulerAngleY());
-        rotationObject.putDouble("eulerZ", face.getHeadEulerAngleZ());
+        rotationObject.putDouble(EULER_X, face.getHeadEulerAngleX());
+        rotationObject.putDouble(EULER_Y, face.getHeadEulerAngleY());
+        rotationObject.putDouble(EULER_Z, face.getHeadEulerAngleZ());
 
         return rotationObject;
     }
@@ -99,8 +109,8 @@ public class FaceDataProcessorImpl implements FaceDataProcessor {
     public WritableMap getWritableMapFromPointF(PointF point) {
         WritableMap mapObject = Arguments.createMap();
 
-        mapObject.putDouble("X", point.x);
-        mapObject.putDouble("Y", point.y);
+        mapObject.putDouble(X, point.x);
+        mapObject.putDouble(Y, point.y);
 
         return mapObject;
     }
