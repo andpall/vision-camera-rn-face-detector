@@ -1,19 +1,54 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'vision-camera-rn-face-detector';
+import {
+  Camera,
+  useCameraDevices,
+  useFrameProcessor,
+} from 'react-native-vision-camera';
+import {
+  getLandMarkFromFace,
+  scanFacesFromCamera,
+  FaceField,
+} from 'vision-camera-rn-face-detector';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const devices = useCameraDevices();
+  const device = devices.front;
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+  const getPermission = async () => {
+    return await Camera.requestCameraPermission();
+  };
+
+  const frameProcessor = useFrameProcessor((frame) => {
+    'worklet';
+    const faces = scanFacesFromCamera(frame);
+    faces[0] &&
+      console.log(getLandMarkFromFace(faces[0], FaceField.SMILE_PROBABILITY));
+    console.log(faces);
+    frame.close();
   }, []);
 
+  React.useEffect(() => {
+    getPermission();
+  }, []);
+
+  if (device == null)
+    return (
+      <View style={styles.container}>
+        <Text>No Device </Text>
+      </View>
+    );
+
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <Camera
+      style={StyleSheet.absoluteFill}
+      device={device}
+      frameProcessor={frameProcessor}
+      frameProcessorFps={3}
+      fps={25}
+      isActive={true}
+    />
   );
 }
 
