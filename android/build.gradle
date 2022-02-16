@@ -67,6 +67,5 @@ dependencies {
   implementation "androidx.camera:camera-core:1.0.2"
   implementation "androidx.camera:camera-extensions:1.1.0-beta01"
   implementation 'com.android.support:multidex:2.0.1'
-  // implementation 'com.github.mrousavy:react-native-vision-camera:2.12.0'
   api project(":react-native-vision-camera")
 }
