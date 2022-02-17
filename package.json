@@ -1,6 +1,6 @@
 {
   "name": "vision-camera-rn-face-detector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugin for vision-camera",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -47,6 +47,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.16.7",
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
@@ -61,15 +62,19 @@
     "jest": "^26.0.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "16.13.1",
-    "react-native": "0.63.4",
+    "react": "^17.0.2",
+    "react-native": "^0.67.2",
     "react-native-builder-bob": "^0.18.0",
+    "react-native-reanimated": "^2.4.1",
+    "react-native-vision-camera": "^2.12.0",
     "release-it": "^14.2.2",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-reanimated": ">=2.1.0",
+    "react-native-vision-camera": ">= 2"
   },
   "jest": {
     "preset": "react-native",

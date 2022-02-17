@@ -1,59 +1,71 @@
 buildscript {
-    if (project == rootProject) {
-        repositories {
-            google()
-            mavenCentral()
-            jcenter()
-        }
-
-        dependencies {
-            classpath 'com.android.tools.build:gradle:3.5.3'
-        }
+  if (project == rootProject) {
+    repositories {
+      google()
+      mavenCentral()
+      jcenter()
     }
+
+    dependencies {
+      classpath("com.android.tools.build:gradle:4.2.1")
+    }
+  }
 }
 
 apply plugin: 'com.android.library'
 
 def safeExtGet(prop, fallback) {
-    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
 android {
-    compileSdkVersion safeExtGet('VisionCameraRnFaceDetector_compileSdkVersion', 29)
-    defaultConfig {
-        minSdkVersion safeExtGet('VisionCameraRnFaceDetector_minSdkVersion', 16)
-        targetSdkVersion safeExtGet('VisionCameraRnFaceDetector_targetSdkVersion', 29)
-        versionCode 1
-        versionName "1.0"
+  compileSdkVersion safeExtGet('VisionCameraRnFaceDetector_compileSdkVersion', 31)
+  buildToolsVersion safeExtGet('VisionCameraImageLabeler_buildToolsVersion', '30.0.2')
+  ndkVersion "22.0.7026061"
+  defaultConfig {
+    minSdkVersion safeExtGet('VisionCameraRnFaceDetector_minSdkVersion', 21)
+    targetSdkVersion safeExtGet('VisionCameraRnFaceDetector_targetSdkVersion', 31)
+    versionCode 1
+    versionName "1.0"
+    multiDexEnabled true
+    missingDimensionStrategy 'react-native-camera', 'general'
+  }
 
+  buildTypes {
+    release {
+      minifyEnabled false
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-    lintOptions {
-        disable 'GradleCompatible'
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+  }
+  lintOptions {
+    disable 'GradleCompatible'
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 repositories {
-    mavenLocal()
-    maven {
-        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        url("$rootDir/../node_modules/react-native/android")
-    }
-    google()
-    mavenCentral()
-    jcenter()
+  mavenLocal()
+  maven {
+    // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+    url("$rootDir/../node_modules/react-native/android")
+  }
+  google()
+  mavenCentral()
+  maven { url "https://jitpack.io" }
+  maven { url "https://maven.google.com" }
+  jcenter()
 }
 
 dependencies {
-    //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+  implementation fileTree(dir: "libs", include: ["*.jar"])
+  //noinspection GradleDynamicVersion
+  implementation "com.facebook.react:react-native:+"  // From node_modules
+  implementation 'com.google.mlkit:face-detection:16.1.4'
+  implementation "com.google.android.gms:play-services-base:18.0.1"
+  implementation "androidx.camera:camera-core:1.0.2"
+  implementation "androidx.camera:camera-extensions:1.1.0-beta01"
+  implementation 'com.android.support:multidex:2.0.1'
+  api project(":react-native-vision-camera")
 }

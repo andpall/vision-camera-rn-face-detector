@@ -13,5 +13,11 @@ module.exports = {
         },
       },
     ],
+    [
+      'react-native-reanimated/plugin',
+      {
+        globals: ['__vision_camera_plugin'],
+      },
+    ],
   ],
 };
