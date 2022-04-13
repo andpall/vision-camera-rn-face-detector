@@ -169,24 +169,68 @@ public class FaceDataProcessorImpl implements FaceDataProcessor {
                 faceMap.putMap(MOUTH_RIGHT, getWritableMapFromPointF(mouthRight.getPosition()));
             }
 
-            faceMap.putArray(FACE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.FACE).getPoints()));
+            try {
+              faceMap.putArray(FACE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.FACE).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(LEFT_EYEBROW_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_EYEBROW_TOP).getPoints()));
+            } catch (Exception e) {
+            }
 
-            faceMap.putArray(LEFT_EYEBROW_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_EYEBROW_TOP).getPoints()));
-            faceMap.putArray(LEFT_EYEBROW_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_EYEBROW_BOTTOM).getPoints()));
-            faceMap.putArray(RIGHT_EYEBROW_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_EYEBROW_TOP).getPoints()));
-            faceMap.putArray(RIGHT_EYEBROW_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_EYEBROW_BOTTOM).getPoints()));
+            try {
+              faceMap.putArray(LEFT_EYEBROW_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_EYEBROW_BOTTOM).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(RIGHT_EYEBROW_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_EYEBROW_TOP).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(RIGHT_EYEBROW_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_EYEBROW_BOTTOM).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(LEFT_EYE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_EYE).getPoints()));
 
-            faceMap.putArray(LEFT_EYE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_EYE).getPoints()));
-            faceMap.putArray(RIGHT_EYE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_EYE).getPoints()));
-            faceMap.putArray(NOSE_BRIDGE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.NOSE_BRIDGE).getPoints()));
-            faceMap.putArray(NOSE_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.NOSE_BOTTOM).getPoints()));
-            faceMap.putArray(LEFT_CHEEK_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_CHEEK).getPoints()));
-            faceMap.putArray(RIGHT_CHEEK_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_CHEEK).getPoints()));
-
-            faceMap.putArray(UPPER_LIP_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.UPPER_LIP_TOP).getPoints()));
-            faceMap.putArray(UPPER_LIP_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.UPPER_LIP_BOTTOM).getPoints()));
-            faceMap.putArray(LOWER_LIP_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LOWER_LIP_TOP).getPoints()));
-            faceMap.putArray(LOWER_LIP_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LOWER_LIP_BOTTOM).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(RIGHT_EYE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_EYE).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(NOSE_BRIDGE_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.NOSE_BRIDGE).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(NOSE_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.NOSE_BOTTOM).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(LEFT_CHEEK_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LEFT_CHEEK).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(RIGHT_CHEEK_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.RIGHT_CHEEK).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(UPPER_LIP_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.UPPER_LIP_TOP).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(UPPER_LIP_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.UPPER_LIP_BOTTOM).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(LOWER_LIP_TOP_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LOWER_LIP_TOP).getPoints()));
+            } catch (Exception e) {
+            }
+            try {
+              faceMap.putArray(LOWER_LIP_BOTTOM_CONTOUR, getArrayFromPointList(face.getContour(FaceContour.LOWER_LIP_BOTTOM).getPoints()));
+            } catch (Exception e) {
+            }
 
             if (face.getSmilingProbability() != null) {
                 faceMap.putDouble(SMILE_PROBABILITY, face.getSmilingProbability());
